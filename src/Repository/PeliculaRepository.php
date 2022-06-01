@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManager;
 
 /**
  * @extends ServiceEntityRepository<Pelicula>
@@ -75,4 +76,17 @@ class PeliculaRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    
+
+   /*  public function getLastUploadedFilms(EntityManager $em)
+    {
+        return $em->createQuery(
+            "SELECT p
+            FROM App\Entity\Pelicula p
+            ORDER BY "
+
+        )
+    } */
+    
 }

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}Catálogo de películas{% endblock %}
+{%  block main %}
+	{{ parent() }}
+	<h2>{{ pelicula.titulo }}</h2>
+	<p>Detalles de la película {{ pelicula.titulo }},
+	de {{ pelicula.director }} en <b>SymfoFilms</b>.</p>
+	
+	<p>A lo largo de las próximas semanas iremos editando este ejemplo para
+	dotarlo de neuvas características y funcionalidades.</p>
+	
+	<div class="bg-light border my-3 p-3 row align-items-center justify-content-center">
+	<div class="col m-3 p-3 text-start">
+		
+			<p><b>ID</b>: {{ pelicula.id }}</p>
+			<p><b>Título</b>: {{ pelicula.titulo }}</p>
+			<p><b>Duración</b>: {{ pelicula.duracion }}</p>
+			<p><b>Director</b>: {{ pelicula.director }}</p>
+			<p><b>Género</b>: {{ pelicula.genero}}</p>
+			<p><b>Estreno</b>: {{ pelicula.estreno}}</p>
+			<p><b>Valoracion</b>:
+				{{ pelicula.valoracion ? pelicula.valoracion~'/5' : 'Sin valorar' }}</p>
+			{% if pelicula.sinopsis %}
+				<h2>Sinopsis:</h2>
+				<p>{{ pelicula.sinopsis}}</p>
+			{% endif %}
+	</div>
+	<div class="col m-3 p-3 text-center bg-light">
+		<img class="rounded border movie-cover" style="max-width: 240px"
+			alt="Carátula de {{pelicula.titulo}}"
+			title="Carátula de {{pelicula.titulo}}"
+			src="{{ asset(covers_directory~'/'~(pelicula.caratula ?? 'default.jpg'))}}">
+	</div>
+	<div class="text-center">
+		<a href="{{  path('pelicula_list') }}">
+			<img height="40" src="{{ asset('images/buttons/list.png') }}"
+			alt="Lista" title="Volver al listado"></a>
+		</a>
+		<a href="{{ path('pelicula_edit', {'id':pelicula.id}) }}">
+			<img height="40" src="{{ asset('images/buttons/update.png') }}"
+			alt="Modificar" title="Modificar"></a>
+		</a>
+		<a href="{{  path('pelicula_delete', {'id':pelicula.id}) }}">
+			<img height="40" src="{{ asset('images/buttons/delete.png') }}"
+			alt="Borrar" title="Borrar"></a>
+		</a>
+	</div>
+	
+{% endblock %}

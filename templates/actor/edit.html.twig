@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}Edición de actor <b>{{ actor.nombre }}{% endblock %}
+{%  block main %}
+	{{ parent() }}
+	<p>Edición de la actor <b>{{ actor.nombre }}</b>.</p>
+	<p>A lo largo de las próximas semanas iremos editando este ejemplo para dotarlo de nuevas características y funcionalidades.</p>
+	
+
+	<div class="bg-light border row align-items-center justify-content-center my-3">
+
+
+		<div class="col-6">
+			{{ form(formulario) }}
+		</div>
+	
+	<div class="col-6 text-center">
+			<figure class="my-2 p-2">
+				<img class="rounded border movie-cover" style="max-width: 220px"
+					alt="Foto de {{actor.nombre}}"
+					title= "Carátula de {{actor.nombre}}"
+					src="{{asset(actors_directory~'/'~(actor.image ?? 'default.jpg'))}}">
+
+				{% if actor.image %}
+				<figcaption class="my-3 text-center">
+					Borrar esta Imagen
+					<a href="{{path('actor_delete_image', {'id': actor.id})}}">
+						<img src="{{asset('images/buttons/delete.png')}}" height="30" width="30"
+							alt="Borrar image" title="Borrar image">
+					</a>
+				</figcaption>
+				{% endif %}
+			</figure>
+		</div>
+	</div>
+	
+	
+{% endblock %}

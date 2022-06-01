@@ -1,19 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+    	{% block head %}
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, inicial-scale=1">
+    	
+    	<title>{%  block title %}{% endblock %} - Symfofilms</title>
+    	
+    	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+    	
+    	
+    	{% endblock %}
     </head>
+    
     <body>
-        {% block body %}{% endblock %}
+    	{% block header %}
+    	<header class="border bg-light justify-content-center d-flex">
+    		<div class="container row align-items-center">
+				<hgroup class="col-8">
+					<h1>SymfoFilms</h1>
+					<h2>Página de cine, ejemplo de clase.</h2>
+				<p style="font-style:italic">"{{ frase.getFraseAleatoria() }}"</p>
+				</hgroup>
+				<figure class="col-4 text-end ">
+					<a href="{{ path('portada') }}">
+						<img class="h-auto" alt="Logo" src="/images/template/logo.png">
+				
+					</a>
+				
+				</figure>
+			</div>
+    	</header>
+    	{% endblock %}
+    	
+    	{% block nav %}
+    	<div class="container now">
+    		<nav class="col-9">
+    			<ul class="nav nav-pills">
+    				<li class="nav-item mr-2">
+    					<a class="nav-link" href="{{ path('portada') }}">Inicio</a>
+    				</li>
+    				<li class="nav-item mr-2">
+    					<a class="nav-link" href="{{ path('pelicula_list') }}">Peliculas</a>
+    				</li>
+    				<li class="nav-item mr-2">
+    					<a class="nav-link" href="{{ path('pelicula_create') }}">Nueva película</a>
+    				</li>    				
+    				<li class="nav-item mr-2">
+    					<a class="nav-link" href="{{ path('actor_list') }}">Actores</a>
+    				</li>
+    				<li class="nav-item mr-2">
+    					<a class="nav-link" href="{{ path('actor_create') }}">Nuevo actor</a>
+    				</li>    				
+    				<li class="nav-item mr-2">
+    					<a class="nav-link" href="{{ path('contacto') }}">Contacto</a>
+    				</li>    				
+    				<li class="nav-item mr-2">
+    					<a class="nav-link" href="{{ path('novedades') }}">Novedades</a>
+    				</li>    				
+    			</ul>
+    		</nav>
+    		<div class="col-3 pt-2 text-end">
+    			{{ "now"|date('d/m/Y H:i', timezone="Europe/Madrid") }}
+    		</div>
+    	</div>
+    	{% endblock %}
+    	
+    	<main class="my-3 container">
+    		{% block main %}
+    			{% block success %}
+    				{% for message in app.flashes('success') %}
+    					<div class="alert alert-success">
+    						{{ message }}
+    					</div>
+    				{% endfor %}
+    			{% endblock %}
+    		{% endblock %}
+    	</main>
+    	
+        {% block footer %}
+        	<footer class="page-footer font-small p-4 bg-light border now">
+        		<p>Aplicación crada por <b>Carla Velasco</b> como ejemplo de clase.
+        		Desarrollada haciendo uso de <b>Symfony</b> y <b>Bootstrap</b>.</p>
+        	</footer>
+        {% endblock %}
     </body>
 </html>

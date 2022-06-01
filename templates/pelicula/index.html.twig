@@ -1,20 +1,28 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello PeliculaController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/SymfoFilms5.3/src/Controller/PeliculaController.php'|file_link(0) }}">src/Controller/PeliculaController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/SymfoFilms5.3/templates/pelicula/index.html.twig'|file_link(0) }}">templates/pelicula/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block title %}Catálogo de películas{% endblock %}
+{%  block main %}
+	{{ parent() }}
+	<p>Esta es la portada del sitio web <b>Symfofilms</b>.</p>
+	
+	<p>A lo largo de las próximas semanas iremos editando este ejemplo para dotarlo de nuevas características y funcionalidades.</p>
+	
+	
+	<div class="d-flex">
+		<figure class="m-2">
+			<img class="img-fluid" alt="Akira" src="/images/template/akira.jpg">
+		</figure>
+		<figure class="m-2">
+			<img class="img-fluid" alt="Akira" src="/images/template/terminator2.jpg">
+		</figure>
+		<figure class="m-2">
+			<img class="img-fluid" alt="Akira" src="/images/template/mejor.jpg">
+		</figure>
+	</div>
 {% endblock %}
+
+
+
+
+
+
+
